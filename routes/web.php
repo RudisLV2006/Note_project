@@ -6,4 +6,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('main', [NoteController::class, 'index']);
+Route::get('/notes', [NoteController::class, 'index']);
