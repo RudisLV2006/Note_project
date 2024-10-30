@@ -9,7 +9,7 @@
 
 <body>
     <h1>Create note</h1>
-    <form action="/notes" method="post">
+    <form action="/note" method="post">
         @csrf
         <label for="title">Title: </label>
         <input type="text" id="title" name="title">

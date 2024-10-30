@@ -9,17 +9,21 @@
 
 <body>
     <h1>All notes</h1>
-    <a href="notes/create">Create note</a>
+    <a href="note/create">Create note</a>
     <ul>
         @foreach ($allNotes as $note)
             <li>
                 {{$note->title}}
-                <p>{{$note->content}}</p>
+
             </li>
             <div>
-                <a href="notes/{{ $note->id }}">View</a>
-                <a href="">Edit</a>
-                <button>Delete</button>
+                <a href="note/show/{{ $note->id }}">View</a>
+                <a href="note/{{$note->id}}/edit">Edit</a>
+                <form action="/note/{{$note->id}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button>delete</button>
+                </form>
             </div>
         @endforeach
     </ul>

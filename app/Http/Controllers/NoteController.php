@@ -23,6 +23,14 @@ class NoteController extends Controller
     public function show(Note $note)
     {
         return view('note.show', ['note' => $note]);
+
+        //view('note.show', ['note' => $note])     'note' nosaukums skatā(view)
+    }
+    public function edit(Note $note)
+    {
+        return view('note.edit', ['note' => $note]);
+
+        //view('note.show', ['note' => $note])     'note' nosaukums skatā(view)
     }
     public function store(Request $request)
     {
@@ -33,5 +41,21 @@ class NoteController extends Controller
             'content' => $request->content,
         ];
         Note::create($data);
+    }
+    public function update(Request $request, Note $note)
+    {
+        // \Log::debug($request);
+
+        $data = [
+            'title' => $request->title,
+        ];
+        $note->update($data);
+    }
+
+    public function destroy(Note $note)
+    {
+        $note->delete();
+        return redirect('/note');
+        // return view('Note deelete');
     }
 }
